@@ -7,7 +7,9 @@
 #include <sea-turtle.h>
 #include <pufferfish.h>
 
-#include "test/cmocka.h"
+#ifdef TEST
+#include <test/cmocka.h>
+#endif
 
 #define PUFFERFISH_STRING_POOL_ERROR_STRING_NOT_FOUND             (-1)
 
