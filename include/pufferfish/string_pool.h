@@ -55,6 +55,7 @@ bool pufferfish_string_pool_invalidate(struct pufferfish_string_pool *object);
  * been reached.
  * @throws PUFFERFISH_STRING_POOL_ERROR_MEMORY_ALLOCATION_FAILED if there is
  * insufficient memory to retrieve pooled string instance.
+ * @note <b>out</b> must be released once done with it.
  */
 bool pufferfish_string_pool_get(struct pufferfish_string_pool *object,
                                 const struct sea_turtle_string *string,
