@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(aquarium-pufferfish VERSION 1.0.2
+project(aquarium-pufferfish VERSION 1.0.3
         LANGUAGES C
         DESCRIPTION "String pool in C")
 
