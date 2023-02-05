@@ -42,7 +42,7 @@ bool pufferfish_string_pool_init(struct pufferfish_string_pool *object);
 bool pufferfish_string_pool_invalidate(struct pufferfish_string_pool *object);
 
 /**
- * @brief Receive the matching strong reference in the string pool.
+ * @brief Retrieve the matching strong reference in the string pool.
  * @param [in] object string pool instance.
  * @param [in] string to find in string pool.
  * @param [out] out strong reference of string in pool.

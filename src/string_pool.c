@@ -154,7 +154,7 @@ static bool add(struct pufferfish_string_pool *const object,
                 PUFFERFISH_STRING_POOL_ERROR_MEMORY_ALLOCATION_FAILED;
         return false;
     }
-    if (!sea_turtle_string_init_with_string(key, string)) {
+    if (!sea_turtle_string_init_string(key, string)) {
         seagrass_required_true(SEA_TURTLE_STRING_ERROR_MEMORY_ALLOCATION_FAILED
                                == sea_turtle_error);
         free(key);
