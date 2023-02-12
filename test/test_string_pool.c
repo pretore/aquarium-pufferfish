@@ -17,17 +17,6 @@ static void check_invalidate_error_on_object_is_null(void **state) {
     seahorse_error = SEAHORSE_ERROR_NONE;
 }
 
-static void check_invalidate(void **state) {
-    seahorse_error = SEAHORSE_ERROR_NONE;
-    struct pufferfish_string_pool object = {};
-    pthread_rwlock_destroy_is_overridden = true;
-    will_return_count(cmocka_test_pthread_rwlock_destroy, EBUSY, 1);
-    will_return_count(cmocka_test_pthread_rwlock_destroy, 0, 1);
-    assert_true(pufferfish_string_pool_invalidate(&object));
-    pthread_rwlock_destroy_is_overridden = false;
-    seahorse_error = SEAHORSE_ERROR_NONE;
-}
-
 static void check_init_error_on_object_is_null(void **state) {
     seahorse_error = SEAHORSE_ERROR_NONE;
     assert_false(pufferfish_string_pool_init(NULL));
@@ -169,7 +158,6 @@ static void check_shrink(void **state) {
 int main(int argc, char *argv[]) {
     const struct CMUnitTest tests[] = {
             cmocka_unit_test(check_invalidate_error_on_object_is_null),
-            cmocka_unit_test(check_invalidate),
             cmocka_unit_test(check_init_error_on_object_is_null),
             cmocka_unit_test(check_init_error_on_memory_allocation_failed),
             cmocka_unit_test(check_init),

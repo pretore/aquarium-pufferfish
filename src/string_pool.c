@@ -43,25 +43,7 @@ bool pufferfish_string_pool_invalidate(
         pufferfish_error = PUFFERFISH_STRING_POOL_ERROR_OBJECT_IS_NULL;
         return false;
     }
-    do {
-        switch (pthread_rwlock_destroy(&object->lock)) {
-            default: {
-                seagrass_required_true(false);
-            }
-            case EBUSY: {
-                const struct timespec delay = {
-                        .tv_nsec = 1000
-                };
-                seagrass_required_true(!nanosleep(&delay, NULL)
-                                       || errno == EINTR);
-                continue;
-            }
-            case 0: {
-                /* fall-through */
-            }
-        }
-        break;
-    } while (true);
+    seagrass_required_true(!pthread_rwlock_destroy(&object->lock));
     seagrass_required_true(seahorse_red_black_tree_map_s_wr_invalidate(
             &object->map));
     *object = (struct pufferfish_string_pool) {0};
